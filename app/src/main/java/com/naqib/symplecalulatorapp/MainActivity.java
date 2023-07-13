@@ -1,19 +1,15 @@
 package com.naqib.symplecalulatorapp;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-
 public class MainActivity extends AppCompatActivity {
     TextView output;
     Button ac, pn, per, div, mul, min, add, eq, one, two, three, four, five, six, seven, eight, nine, zero, dot;
     String num1 = "0";
     String num2 = "0";
     String operator = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,44 +36,25 @@ public class MainActivity extends AppCompatActivity {
         dot = findViewById(R.id.btnDot);
 
         zero.setOnClickListener(view -> appendToNum2(zero.getText().toString()));
-
         one.setOnClickListener(view -> appendToNum2(one.getText().toString()));
-
         two.setOnClickListener(view -> appendToNum2(two.getText().toString()));
-
         three.setOnClickListener(view -> appendToNum2(three.getText().toString()));
-
         four.setOnClickListener(view -> appendToNum2(four.getText().toString()));
-
         five.setOnClickListener(view -> appendToNum2(five.getText().toString()));
-
         six.setOnClickListener(view -> appendToNum2(six.getText().toString()));
-
         seven.setOnClickListener(view -> appendToNum2(seven.getText().toString()));
-
         eight.setOnClickListener(view -> appendToNum2(eight.getText().toString()));
-
         nine.setOnClickListener(view -> appendToNum2(nine.getText().toString()));
-
         ac.setOnClickListener(view -> clear());
-
         pn.setOnClickListener(view -> togglePositiveNegative());
-
         per.setOnClickListener(view -> calculatePercentage());
-
         div.setOnClickListener(view -> setOperator(div.getText().toString()));
-
         mul.setOnClickListener(view -> setOperator("*"));
-
         min.setOnClickListener(view -> setOperator(min.getText().toString()));
-
         add.setOnClickListener(view -> setOperator(add.getText().toString()));
-
         eq.setOnClickListener(view -> calculateResult());
-
         dot.setOnClickListener(view -> appendDecimalPoint());
     }
-
     private void appendToNum2(String value) {
         if(num2.length()<11)
             {
@@ -89,14 +66,12 @@ public class MainActivity extends AppCompatActivity {
             output.setText(formatOutput(num2));
         }
     }
-
     private void clear() {
         num1 = "0";
         num2 = "0";
         operator = "";
         output.setText("");
     }
-
     private void togglePositiveNegative() {
         if (!num2.isEmpty()) {
             double number = Double.parseDouble(num2);
@@ -105,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
             output.setText(num2);
         }
     }
-
     private void calculatePercentage() {
         if (!num2.isEmpty()) {
             double number = Double.parseDouble(num2);
@@ -114,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
             output.setText(num2);
         }
     }
-
     private void setOperator(String op) {
         if (!num2.isEmpty()) {
             if (!num1.isEmpty() && !operator.isEmpty()) {
@@ -127,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
             calculateResult();
         }
     }
-
     private void appendDecimalPoint() {
         if (!num2.contains(".")) {
             if (num2.isEmpty()) {
@@ -138,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
             output.setText(num2);
         }
     }
-
     @SuppressLint("SetTextI18n")
     private void calculateResult() {
         if (!num1.isEmpty() && !num2.isEmpty() && !operator.isEmpty()) {
@@ -171,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
             output.setText(formatOutput(num2));
         }
     }
-
     @SuppressLint("DefaultLocale")
     private String formatOutput(String value) {
         double number = Double.parseDouble(value);
@@ -203,7 +173,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
     private int getDecimalPlaces(double number) {
         String numberString = String.valueOf(number);
         int decimalIndex = numberString.indexOf('.');
