@@ -79,13 +79,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void appendToNum2(String value) {
-        if (num2.equals("0")) {
-            num2 = value;
-        } else {
-            num2 += value;
+        if(num2.length()<11)
+            {
+            if (num2.equals("0")) {
+                num2 = value;
+            } else {
+                num2 += value;
+            }
+            output.setText(formatOutput(num2));
         }
-
-        output.setText(formatOutput(num2));
     }
 
     private void clear() {
